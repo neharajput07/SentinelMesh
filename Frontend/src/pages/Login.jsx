@@ -276,7 +276,7 @@ function Login() {
   return (
     <div className="lp-root">
 
-      <canvas ref={canvasRef} className="lp-canvas" />
+      <canvas ref={canvasRef} className="lp-canvas" suppressHydrationWarning={true} />
       <div className="lp-scanline" />
       <div className="lp-corner lp-c1" />
       <div className="lp-corner lp-c2" />
@@ -566,7 +566,7 @@ function Login() {
 
         {/* RIGHT NETWORK */}
         <div className="lp-right">
-          <canvas ref={networkRef} className="lp-network"></canvas>
+          <canvas ref={networkRef} className="lp-network" suppressHydrationWarning={true}></canvas>
         </div>
 
       </div>
