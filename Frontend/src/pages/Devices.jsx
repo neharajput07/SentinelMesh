@@ -2,6 +2,7 @@ import "../styles/dashboard.css";
 
 import { useEffect, useState } from "react";
 import axios from "../services/axiosInstance";
+import API_URL from "../config/api";
 
 import Sidebar from "../components/Sidebar";
 
@@ -25,7 +26,7 @@ function Devices() {
   const fetchDevices = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/device"
+        `${API_URL}/device`
       );
       setDevices(response.data);
     } catch (error) {
@@ -43,7 +44,7 @@ function Devices() {
   const addDevice = async () => {
     try {
       await axios.post(
-        "http://localhost:8080/device",
+        `${API_URL}/device`,
         newDevice
       );
       fetchDevices();
@@ -56,7 +57,7 @@ function Devices() {
   const deleteDevice = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:8080/device/${id}`
+        `${API_URL}/device/${id}`
       );
       fetchDevices();
     } catch (error) {
@@ -76,7 +77,7 @@ function Devices() {
   const updateDevice = async () => {
     try {
       await axios.put(
-        `http://localhost:8080/device/${editingId}`,
+        `${API_URL}/device/${editingId}`,
         newDevice
       );
       fetchDevices();

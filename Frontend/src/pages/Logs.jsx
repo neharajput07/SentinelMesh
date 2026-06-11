@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "../services/axiosInstance";
+import API_URL from "../config/api";
 import "../styles/logs.css";
 import Sidebar from "../components/Sidebar";
 
@@ -14,7 +15,7 @@ function Logs() {
   const fetchLogs = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/logs"
+        `${API_URL}/logs`
       );
       setLogs(response.data);
     } catch (error) {

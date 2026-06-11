@@ -3,6 +3,7 @@ import "../styles/signup.css";
 import { useState } from "react";
 
 import axios from "axios";
+import API_URL from "../config/api";
 
 import {
   Link,
@@ -23,7 +24,7 @@ function Signup() {
 
       const response = await axios.post(
 
-        "http://localhost:8080/signup",
+        `${API_URL}/signup`,
 
         {
           email: email,
