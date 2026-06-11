@@ -2,6 +2,7 @@ import "../styles/alerts.css";
 
 import { useEffect, useState } from "react";
 import axios from "../services/axiosInstance";
+import API_URL from "../config/api";
 
 import Sidebar from "../components/Sidebar";
 
@@ -26,7 +27,7 @@ function Alerts() {
     try {
 
       const response = await axios.get(
-        "http://localhost:8080/device"
+        `${API_URL}/device`
       );
 
       const suspiciousDevices = response.data.filter(

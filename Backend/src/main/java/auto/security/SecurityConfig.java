@@ -70,9 +70,12 @@ public BCryptPasswordEncoder passwordEncoder() {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allow React frontend
+        // Allow React frontend (local dev and Vercel production)
         config.setAllowedOrigins(
-            List.of("http://localhost:5173")
+            List.of(
+                "http://localhost:5173",
+                "https://sentinel-mesh-gamma.vercel.app"
+            )
         );
 
         // Allow all HTTP methods

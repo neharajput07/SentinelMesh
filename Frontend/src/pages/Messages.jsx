@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "../services/axiosInstance";
+import API_URL from "../config/api";
 import Sidebar from "../components/Sidebar";
 import "../styles/dashboard.css";
 
@@ -14,7 +15,7 @@ function Messages() {
   const fetchMessages = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/contact"
+        `${API_URL}/contact`
       );
       setMessages(response.data);
     } catch (error) {
@@ -72,7 +73,7 @@ function Messages() {
                   className="delete-btn"
                   onClick={() => {
                     axios.delete(
-                      `http://localhost:8080/contact/${msg.id}`
+                      `${API_URL}/contact/${msg.id}`
                     ).then(() => fetchMessages());
                   }}
                 >
