@@ -2,6 +2,7 @@ import "../styles/login.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import API_URL from "../config/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -184,7 +185,7 @@ function Login() {
     try {
       setContactLoading(true);
       setContactError("");
-      await axios.post("http://localhost:8080/contact", {
+      await axios.post(`${API_URL}/contact`, {
         name: contactName,
         email: contactEmail,
         message: contactMsg
@@ -209,7 +210,7 @@ function Login() {
       setLoading(true);
       setError("");
       const response = await axios.post(
-        "http://localhost:8080/login",
+        `${API_URL}/login`,
         { email, password }
       );
       const { token, email: userEmail } = response.data;
@@ -238,7 +239,7 @@ function Login() {
       setSignupLoading(true);
       setSignupError("");
       await axios.post(
-        "http://localhost:8080/signup",
+        `${API_URL}/signup`,
         { email: signupEmail, password: signupPassword }
       );
       setSignupSuccess("Account created! You can now login.");

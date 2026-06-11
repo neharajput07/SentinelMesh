@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -3,6 +3,7 @@ import "../styles/dashboard.css";
 import { useEffect, useState } from "react";
 
 import axios from "../services/axiosInstance";
+import API_URL from "../config/api";
 
 import Sidebar from "../components/Sidebar";
 
@@ -50,7 +51,7 @@ function Dashboard() {
 
   const fetchDevices = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/device");
+      const response = await axios.get(`${API_URL}/device`);
       setDevices(response.data);
     } catch (error) {
       console.error(error);
@@ -59,7 +60,7 @@ function Dashboard() {
 
   const fetchLogs = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/logs");
+      const response = await axios.get(`${API_URL}/logs`);
       setLogs(response.data);
     } catch (error) {
       console.error(error);
@@ -75,7 +76,7 @@ function Dashboard() {
 
   const addDevice = async () => {
     try {
-      await axios.post("http://localhost:8080/device", newDevice);
+      await axios.post(`${API_URL}/device`, newDevice);
       fetchDevices();
       fetchLogs();
       setNewDevice({ deviceName: "", status: "", trustScore: "" });
@@ -86,7 +87,7 @@ function Dashboard() {
 
   const deleteDevice = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/device/${id}`);
+      await axios.delete(`${API_URL}/device/${id}`);
       fetchDevices();
       fetchLogs();
     } catch (error) {
@@ -106,7 +107,7 @@ function Dashboard() {
   const updateDevice = async () => {
     try {
       await axios.put(
-        `http://localhost:8080/device/${editingId}`,
+        `${API_URL}/device/${editingId}`,
         newDevice
       );
       fetchDevices();
